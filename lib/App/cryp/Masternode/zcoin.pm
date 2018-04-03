@@ -35,7 +35,7 @@ sub list_masternodes {
     {
         my $conf_path = "$ENV{HOME}/.zcoin/znode.conf";
         unless (-f $conf_path) {
-            log_debug "Couldn't find Zcoin wallet masternode configuration ".
+            log_debug "Couldn't find local wallet masternode configuration ".
                 "file '$conf_path', skipped";
             last;
         }
@@ -43,7 +43,7 @@ sub list_masternodes {
         my $fh;
         unless (open $fh, "<", $conf_path) {
             log_error "Can't open '$conf_path': $!, skipped reading ".
-                "Zcoin wallet masternode configuration file";
+                "local wallet masternode configuration file";
             last;
         }
 
