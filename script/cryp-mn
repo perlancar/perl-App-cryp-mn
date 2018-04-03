@@ -1,0 +1,59 @@
+#!perl
+
+# DATE
+# VERSION
+
+use 5.010001;
+use strict;
+use warnings;
+use Log::ger;
+
+use Perinci::CmdLine::cryp;
+
+my $prefix = "/App/cryp/mn/";
+
+Perinci::CmdLine::cryp->new(
+    url => $prefix,
+    log => 1,
+    pass_cmdline_object => 1,
+    config_filename => ["cryp.conf", "cryp-mn.conf"],
+    subcommands => {
+        ls      => { url => "${prefix}list", },
+    },
+)->run;
+
+# ABSTRACT:
+# PODNAME:
+
+=head1 SYNOPSIS
+
+Optional, create configuration in F<~/.config/cryp-mn.conf> (or
+F<~/.config/cryp.conf> so configuration can be shared with the other C<cryp-*>
+family of scripts):
+
+ [masternode/zcoin]
+ ssh_user=foo    ; default: root
+ mn_user=foo     ; default: (ssh_user)
+ ssh_timeout=60  ; default: 300
+
+ ; for particular masternode named 'mn1'
+ [masternode/zcoin/mn1]
+ ssh_user=bar    ; default: root
+ mn_user=bar     ; default: (ssh_user)
+ ssh_timeout=60  ; default: 300
+
+To list masternodes:
+
+ % cryp-mn ls      ;# just list masternode names
+ % cryp-mn ls -l   ;# show details
+ % cryp-mn ls -ls  ;# show details + current status (will query the MNs)
+
+
+=head1 DESCRIPTION
+
+Early release. More functionality will be added in the future.
+
+
+=head1 SEE ALSO
+
+The other C<cryp-*> scripts in the family.
