@@ -20,7 +20,8 @@ Perinci::CmdLine::cryp->new(
     pass_cmdline_object => 1,
     config_filename => ["cryp.conf", "cryp-mn.conf"],
     subcommands => {
-        ls      => { url => "${prefix}list", },
+        'ls-masternodes'    => { url => "${prefix}list_masternodes", },
+        'ls-coins'          => { url => "${prefix}list_coins", },
     },
 )->run;
 
@@ -43,6 +44,11 @@ family of scripts):
  ssh_user=bar    ; default: root
  mn_user=bar     ; default: (ssh_user)
  ssh_timeout=60  ; default: 300
+
+To list supported coins:
+
+ % cryp-mn ls-coins
+ % cryp-mn ls-coins -l
 
 To list masternodes:
 
