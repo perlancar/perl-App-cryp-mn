@@ -54,4 +54,13 @@ Record must contain these keys: C<name> (str), C<ip> (IP address, str), C<port>
 C<collateral_oidx> (collateral's output index in collateral transaction, uint).
 Record can contain additional keys.
 
+=item * with_status
+
+Boolean. Default 0. Only relevant when detail=1.
+
+If set to true, method must return additional record keys: C<status> (str).
+
+Querying status requires querying the list/masternode, so this is not done by
+default.
+
 =back
